@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\MissionRequest;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class MissionRequestController extends Controller
 {
@@ -14,8 +15,11 @@ class MissionRequestController extends Controller
      */
     public function create()
     {
-        return view('mission_request'); // Assuming you have a blade file named 'mission_request.blade.php'
-        // Return a view with the form to submit mission requests
+        // Fetch mission requests for the current user
+        $missionRequests = MissionRequest::where('user_id', auth()->id())->get();
+
+        // Pass mission requests to the view
+        return view('mission_request', compact('missionRequests'));
     }
 
     /**
@@ -25,6 +29,7 @@ class MissionRequestController extends Controller
     {
        // Validate the form data
        $validatedData = $request->validate([
+        'details' =>'required|string',
         'start_date' => 'required|date',
         'end_date' => 'required|date',
         // Add validation rules for other form fields as needed
@@ -37,18 +42,15 @@ class MissionRequestController extends Controller
         // Assign other form field values to corresponding database columns
     ]);
 
-    // Optionally, you can redirect the user after successful form submission
-        return redirect()->back()->with('success', 'Mission request submitted successfully.');
-        // Logic to handle form submission for mission request
-    }
+      }
 
     public function store(Request $request)
     {
         // Validate the incoming data
         $validatedData = $request->validate([
-            'details' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
+            'details' => 'required|string',
 
             // Add more validation rules as needed
         ]);
@@ -69,7 +71,9 @@ class MissionRequestController extends Controller
 
 
         // Redirect back with success message
-        return redirect('dashboard')->with('success', 'Mission request submitted successfully.');
+
+        //return redirect('dashboard')->with('success', 'Mission request submitted successfully.');
+        echo '<script>alert("Mission request submitted successfully. OK."); window.location.href = "'.route('dashboard').'";</script>';
     }
 
 }

@@ -1,0 +1,54 @@
+/* styles.css */
+
+/* Apply dark background to the whole page */
+body {
+    background-color: #1a202c; /* Dark background color */
+    color: #fff; /* Text color */
+}
+
+/* Style the form */
+form {
+    margin: 50px auto; /* Center the form */
+    max-width: 400px; /* Limit form width */
+}
+
+legend {
+    font-size: 1.2em; /* Increase legend font size */
+    font-weight: bold; /* Bold legend text */
+}
+
+fieldset {
+    border: 2px solid #fff; /* White border around the fieldset */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Add padding inside the fieldset */
+    margin-bottom: 20px; /* Add space below the fieldset */
+}
+
+/* Style form elements */
+textarea{
+    height: 10%;
+    width: 100%;
+    padding: 100px;
+
+}
+
+input[type="date"],
+button[type="submit"] {
+    width: 100%; /* Make form elements fill the width */
+    padding: 10px; /* Add padding to form elements */
+    margin-bottom: 10px; /* Add space between form elements */
+    border: 1px solid #ccc; /* Add border to form elements */
+    border-radius: 5px; /* Add rounded corners to form elements */
+    background-color: #fff; /* White background color for form elements */
+}
+
+button[type="submit"] {
+    background-color: #4a5568; /* Background color for submit button */
+    color: #fff; /* Text color for submit button */
+    border: none; /* Remove border from submit button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+button[type="submit"]:hover {
+    background-color: #2d3748; /* Darker background color on hover */
+}

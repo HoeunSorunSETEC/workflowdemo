@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('end_date');
 
             $table->enum('status',['pending','approve','rejected'])->default('pending');
-            $table->unsignedBigInteger('approved_by');
+            $table->unsignedBigInteger('approved_by')->default(null);
 
             $table->timestamps();
 

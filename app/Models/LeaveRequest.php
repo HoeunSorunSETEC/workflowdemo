@@ -11,7 +11,8 @@ class LeaveRequest extends Model
 
     protected $fillable = [
         'user_id',
-        'department_id',
+        'start_date',
+        'end_date',
         'details',
         'status',
         'approved_by',

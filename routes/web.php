@@ -32,14 +32,16 @@ Route::get('/dashboard/admin', function () {
 });
 
 // Routes for leave request
-Route::get('/leave_request', [LeaveRequestController::class, 'create'])->name('leave_request.create');
-Route::post('/leave_request', [LeaveRequestController::class, 'submit'])->name('leave_request.submit');
 
 // Routes for mission request
 Route::middleware('auth')->group(function () {
     Route::get('/mission_request', [MissionRequestController::class, 'create'])->name('mission_request.create');
     Route::post('/mission_request', [MissionRequestController::class, 'submit'])->name('mission_request.submit');
     Route::post('/mission_request/store', [MissionRequestController::class, 'store'])->name('mission_request.store');
+
+    Route::get('/leave_request', [LeaveRequestController::class, 'create'])->name('leave_request.create');
+    Route::post('/leave_request', [LeaveRequestController::class, 'submit'])->name('leave_request.submit');
+    Route::post('/leave_request/store', [LeaveRequestController::class, 'store'])->name('leave_request.store');
 });
 
 require __DIR__.'/auth.php';

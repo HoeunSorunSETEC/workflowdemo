@@ -17,8 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('department_id');
             $table->date('start_date');
             $table->date('end_date');
+            $table->text('details');
             $table->enum('status',['pending', 'approved', 'rejected'])->default('pending');
-            $table->unsignedBigInteger('approved_by');
+            $table->unsignedBigInteger('approved_by')->default(null);
             $table->timestamps();
             //Foreign Key
             $table->foreign('user_id')->references('id')->on('users');
