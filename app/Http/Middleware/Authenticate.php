@@ -22,6 +22,7 @@ class Authenticate
             return $next($request);
         }
 
-        return redirect()->guest(route('login'));
+        // If the user is not authenticated, redirect them to the login page
+        return redirect()->route('login');
     }
 }

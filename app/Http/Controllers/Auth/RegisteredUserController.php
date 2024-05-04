@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'department_id' => ['required', 'exists:departments,id'],
         ]);
-
+        
         $user = User::create([
             'name' => $request->name,
             'phonenumber' => $request->phonenumber,

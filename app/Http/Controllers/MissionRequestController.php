@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MissionRequest;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 
 class MissionRequestController extends Controller
@@ -46,6 +47,9 @@ class MissionRequestController extends Controller
         // Validate the incoming data
         $validatedData = $request->validate([
             'details' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+
             // Add more validation rules as needed
         ]);
 
@@ -54,14 +58,18 @@ class MissionRequestController extends Controller
         $missionRequest->user_id = auth()->user()->id; // Assuming the user is authenticated
         $missionRequest->department_id = $request->user()->department_id; // Assuming department_id is stored in the user model
         $missionRequest->details = $validatedData['details'];
+        $missionRequest->start_date = $validatedData['start_date'];
+        $missionRequest->end_date = $validatedData['end_date'];
         $missionRequest->status = 'pending'; // Set default status
         // Set approved_by if needed
 
         // Save the mission request
         $missionRequest->save();
 
+
+
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Mission request submitted successfully.');
+        return redirect('dashboard')->with('success', 'Mission request submitted successfully.');
     }
 
 }

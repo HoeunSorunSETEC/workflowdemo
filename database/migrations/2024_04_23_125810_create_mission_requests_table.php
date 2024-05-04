@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('department_id');
             $table->text('details');
+            $table->date('start_date');
+            $table->date('end_date');
+
             $table->enum('status',['pending','approve','rejected'])->default('pending');
             $table->unsignedBigInteger('approved_by');
 

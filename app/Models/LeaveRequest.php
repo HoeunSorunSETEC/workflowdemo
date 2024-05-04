@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MissionRequest extends Model
+class LeaveRequest extends Model
 {
     use HasFactory;
 
@@ -13,8 +13,6 @@ class MissionRequest extends Model
         'user_id',
         'department_id',
         'details',
-        'start_date',
-        'end_date',
         'status',
         'approved_by',
     ];
